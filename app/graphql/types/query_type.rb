@@ -14,5 +14,15 @@ module Types
     def all_questions
       Question.all
     end
+
+    field :all_users, [UserType], null: false
+    def all_users
+      User.all
+    end
+
+    field :all_answers, [AnswerType], null: false
+    def all_answers
+      Answer.all
+    end
   end
 end
