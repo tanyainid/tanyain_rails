@@ -13,6 +13,11 @@ module Types
       User.all
     end
 
+    field :all_user_details, [UserType], null: false
+    def all_user_details
+      UserDetail.all
+    end
+
     field :all_answers, [AnswerType], null: false
     def all_answers
       Answer.all

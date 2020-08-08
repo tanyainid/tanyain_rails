@@ -1,14 +1,14 @@
 module Mutations
-  class CreateUser < BaseMutation
+  class User::CreateUser < BaseMutation
     argument :email, String, required: true
     argument :password, String, required: true
 
     field :message, String, null: false
 
     def resolve(email: , password: )
-      olduser = User.find_by(email: email)
+      olduser = ::User.find_by(email: email)
       return { message: 'registered' } if olduser.present?
-      newuser = User.create(email: email, password: password)
+      newuser = ::User.create(email: email, password: password)
       if newuser.valid?
         { message: 'created' }
       else
