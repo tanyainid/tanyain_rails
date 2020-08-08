@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(email: 'admin@admin.com', password: '123456')
+Question.find_or_create_by(title: 'nesciunt', user_id: 1)
+Question.find_or_create_by(title: 'quas', user_id: 1)
