@@ -37,6 +37,7 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+  gem 'graphiql-rails', '1.7.0'
 end
 
 group :test do
@@ -61,4 +62,3 @@ gem "devise-jwt", "~> 0.8.0"
 gem "figaro", "~> 1.2"
 
 gem "jwt", "~> 2.2"
-gem 'graphiql-rails', '1.7.0'
