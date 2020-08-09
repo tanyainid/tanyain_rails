@@ -45,11 +45,11 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: localhost
           # POSTGRES_DB: tanyain_rails_test
           POSTGRES_USER: rails_github_actions
           POSTGRES_PASSWORD: postgres
-          POSTGRES_PORT: 5432
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         # run: |
         #   cp config/database.ci.yml config/database.yml
         #   rake db:create db:migrate
