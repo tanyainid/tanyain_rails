@@ -10,15 +10,17 @@ jobs:
       postgres:
         image: postgres:11
         env:
-          POSTGRES_USER: rails_github_actions
-          POSTGRES_DB: tanyain_rails_test
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-        ports: ["5432:5432"]
+          POSTGRES_DB: tanyain_rails_test
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
       # if you need redis
       # redis:
       #   image: redis
@@ -32,29 +34,34 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.1
+
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: 10.13.0
+          node-version: 12
+
       - name: Install dependencies
         run: |
           sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
           yarn install
+
       - name: Setup test database
         env:
-          RAILS_ENV: test
           PGHOST: localhost
-          # POSTGRES_DB: tanyain_rails_test
-          PGUSER: rails_github_actions
+          PGUSER: postgres
+          PG_PORT: 5432
+          RAILS_ENV: test
           POSTGRES_PASSWORD: postgres
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
         # run: |
         #   cp config/database.ci.yml config/database.yml
         #   rake db:create db:migrate
         run: |
           rake db:create db:migrate
+
       - name: Run tests
         env:
           PGHOST: postgres
