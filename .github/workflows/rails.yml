@@ -64,10 +64,10 @@ jobs:
 
       - name: Run tests
         env:
-          PGHOST: postgres
-          POSTGRES_DB: tanyain_rails_test
-          POSTGRES_USER: rails_github_actions
-          POSTGRES_PASSWORD: postgres
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
+          PGHOST: localhost
+          PGUSER: postgres
+          PG_PORT: 5432
           RAILS_ENV: test
+          POSTGRES_PASSWORD: postgres
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: rake
