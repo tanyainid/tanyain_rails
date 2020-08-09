@@ -1,14 +1,13 @@
 module Mutations
   class Secret < BaseMutation
-    # TODO: define return fields
-    # field :post, Types::PostType, null: false
+    field :message, String, null: true
 
-    # TODO: define arguments
-    # argument :name, String, required: true
+    argument :name, String, required: false
 
-    # TODO: define resolve method
-    # def resolve(name:)
-    #   { post: ... }
-    # end
+    def resolve(args)
+      current_user = ensure_current_user
+
+      { message: current_user.email }
+    end
   end
 end

@@ -34,11 +34,17 @@ module Mutations
     end
 
     def logged_in?
-      !!logged_in_user
+      !!ensure_current_user
     end
 
-    def authorized
-      render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+    # def authorized
+    #   render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+    # end
+
+    def ensure_current_user
+      current_user = context[:current_user]
+      raise GraphQL::ExecutionError, 'Not authorized' unless current_user
+      current_user
     end
   end
 end

@@ -10,9 +10,14 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user,
     }
-    result = TanyainRailsSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = TanyainRailsSchema.execute(
+      query,
+      variables: variables,
+      context: context,
+      operation_name: operation_name
+    )
     render json: result
   rescue => e
     raise e unless Rails.env.development?
@@ -46,5 +51,25 @@ class GraphqlController < ApplicationController
     logger.error e.backtrace.join("\n")
 
     render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+  end
+
+  def current_user
+    return nil if request.headers['Authorization'].blank?
+    token = request.headers['Authorization'].split(' ').last
+    return nil if token.blank?
+    payload = decoded_token(token)
+    if payload
+      user_id = payload[0]['user_id']
+      user = User.find_by(id: user_id)
+    end
+    user
+  end
+
+  def decoded_token(token)
+    begin
+      JWT.decode(token, Figaro.env.jwt_secret_key, true, algorithm: 'HS256')
+    rescue JWT::DecodeError
+      nil
+    end
   end
 end
