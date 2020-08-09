@@ -1,24 +1,31 @@
-# README
+# Heroku command
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## set env on production
 
-Things you may want to cover:
+figaro heroku:set -e production
 
-* Ruby version
+## heroku push
 
-* System dependencies
+dpl --provider=heroku --app=tanyain-rails --api-key=c06af369-4726-445c-bb3f-4d8bab3cd1d9
 
-* Configuration
+## heroku clean
 
-* Database creation
+heroku restart && heroku pg:reset DATABASE --confirm tanyain-rails && heroku run rake db:migrate
 
-* Database initialization
+## seed on heroku
 
-* How to run the test suite
+heroku run rake db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+dpl --provider=heroku --app=tanyain-rails --api-key=c06af369-4726-445c-bb3f-4d8bab3cd1d9
+heroku restart --app=tanyain-rails && heroku pg:reset DATABASE --confirm tanyain-rails --app=tanyain-rails && heroku run rake db:migrate --app=tanyain-rails 
+heroku run rake db:seed --app=tanyain-rails
 
-* Deployment instructions
+```
 
-* ...
+## rebuild database locally
+
+```bash
+rake db:drop db:create db:migrate
+rake db:seed
+```
