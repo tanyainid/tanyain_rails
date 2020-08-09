@@ -29,3 +29,7 @@ heroku run rake db:seed --app=tanyain-rails
 rake db:drop db:create db:migrate
 rake db:seed
 ```
+
+## logs
+
+heroku logs --tail --app tanyain-rails
