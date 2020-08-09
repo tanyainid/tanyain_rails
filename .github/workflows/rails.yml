@@ -45,10 +45,10 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          PGHOST: postgres
-          POSTGRES_DB: tanyain_rails_test
-          POSTGRES_USER: rails_github_actions
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST: postgres
+          # POSTGRES_DB: tanyain_rails_test
+          # POSTGRES_USER: rails_github_actions
+          # POSTGRES_PASSWORD: postgres
           POSTGRES_PORT: 5432
         # run: |
         #   cp config/database.ci.yml config/database.yml
