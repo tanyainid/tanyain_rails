@@ -55,7 +55,10 @@ gem "graphql", "~> 1.11"
 gem "devise", "~> 4.7"
 
 gem "rails_admin", "~> 2.0"
-
-
-
 gem "rack-cors", "~> 1.1"
+
+gem "devise-jwt", "~> 0.8.0"
+
+gem "figaro", "~> 1.2"
+
+gem "jwt", "~> 2.2"
