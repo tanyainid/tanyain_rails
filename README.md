@@ -2,7 +2,7 @@
 
 ## set env on production
 
-figaro heroku:set -e production
+figaro heroku:set -e production --app=tanyain-rails
 
 ## heroku push
 
