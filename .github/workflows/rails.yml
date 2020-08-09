@@ -51,7 +51,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_PORT: 5432
         run: |
-          cp config/database.ci.yml config/database.yml
+          # cp config/database.ci.yml config/database.yml
           rake db:create db:migrate
       - name: Run tests
         env:
