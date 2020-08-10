@@ -8,7 +8,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtBlacklist
 
+  enum role: [:admin, :user]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :user
+  end
+
   def jwt_payload
     { 'foo' => 'bar' }
+  end
+
+  def name
+    user_detail.name
   end
 end
