@@ -1,4 +1,5 @@
 class Api::BaseController < ApplicationController
+  respond_to :json
 
   def authorize_request
     return render_require_auth unless auth_header

@@ -8,6 +8,10 @@ class Api::AuthController < Api::BaseController
     encode_token
   end
 
+  def logout
+    render_success
+  end
+
   def register
     return render_registered if @user.present?
     @user = create_user

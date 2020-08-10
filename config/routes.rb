@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :users
   root to: 'welcome#index'
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     post 'login', to: 'auth#login'
+    delete 'logout', to: 'auth#logout'
     post 'register', to: 'auth#register'
     get 'user', to: 'auth#user'
   end
