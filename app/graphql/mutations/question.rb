@@ -2,10 +2,10 @@ module Mutations
   class Question < BaseMutation
     field :question, Types::QuestionType, null: false
 
-    argument :id, Integer, required: true
+    argument :slug, String, required: true
 
-    def resolve(id:)
-      { question: ::Question.find(id) }
+    def resolve(slug:)
+      { question: ::Question.friendly.find(slug) }
     end
   end
 end
