@@ -6,8 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin = User.create(email: 'admin@admin.com', password: '123456')
-admin.user_detail.create(name: 'admin')
-Question.find_or_create_by(title: 'nesciunt', user_id: 1)
-Question.find_or_create_by(title: 'quas', user_id: 1)
-Answer.find_or_create_by(text: 'corrupti nulla alias', question_id: 1, user_id: 1)
+
+if User.count.zero?
+  admin = User.create(email: 'admin@admin.com', password: '123456')
+  admin.build_user_detail(name: 'admin')
+end
+
+if Question.count.zero?
+  Question.create(title: 'Do id dolore qui aliqua id sunt laboris esse Lorem occaecat ullamco sunt sit.', user_id: 1)
+  Question.create(title: 'Excepteur duis consectetur sit anim occaecat labore.', user_id: 1)
+end
+
+if Answer.count.zero?
+  Answer.create(text: 'Velit minim est nostrud esse duis dolor Lorem officia deserunt enim pariatur.', question_id: 1, user_id: 1)
+end
+
+p 'seed done'

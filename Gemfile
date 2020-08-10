@@ -62,3 +62,5 @@ gem "devise-jwt", "~> 0.8.0"
 gem "figaro", "~> 1.2"
 
 gem "jwt", "~> 2.2"
+
+gem "friendly_id", "~> 5.3"
