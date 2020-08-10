@@ -16,8 +16,6 @@ heroku restart && heroku pg:reset DATABASE --confirm tanyain-rails && heroku run
 
 heroku run rake db:seed
 
-
-dpl --provider=heroku --app=tanyain-rails --api-key=c06af369-4726-445c-bb3f-4d8bab3cd1d9
 heroku restart --app=tanyain-rails && heroku pg:reset DATABASE --confirm tanyain-rails --app=tanyain-rails && heroku run rake db:migrate --app=tanyain-rails 
 heroku run rake db:seed --app=tanyain-rails
 
