@@ -4,5 +4,9 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers
 
-  friendly_id :slug, use: :slugged
+  friendly_id :title, use: :slugged
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 end
