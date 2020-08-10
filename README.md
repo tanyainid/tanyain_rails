@@ -25,6 +25,9 @@ heroku run rake db:seed --app=tanyain-rails
 
 heroku run rake db:migrate db:seed --app=tanyain-rails 
 
+heroku run console --app=tanyain-rails 
+heroku run bash --app=tanyain-rails 
+
 ## rebuild database locally
 
 ```bash
