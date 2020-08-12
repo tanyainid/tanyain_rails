@@ -14,10 +14,7 @@ heroku restart && heroku pg:reset DATABASE --confirm tanyain-rails && heroku run
 
 ## seed on heroku
 
-heroku run rake db:seed
-
-heroku restart --app=tanyain-rails && heroku pg:reset DATABASE --confirm tanyain-rails --app=tanyain-rails && heroku run rake db:migrate --app=tanyain-rails 
-heroku run rake db:seed --app=tanyain-rails
+heroku restart --app=tanyain-rails && heroku pg:reset DATABASE --confirm tanyain-rails --app=tanyain-rails && heroku run rake db:migrate db:seed --app=tanyain-rails 
 
 ## migrate and seed on heroku
 
@@ -28,10 +25,9 @@ heroku run bash --app=tanyain-rails
 
 ## rebuild database locally
 
-```bash
 rake db:drop db:create db:migrate
+rake db:drop db:create db:migrate db:seed
 rake db:seed
-```
 
 ## logs
 
