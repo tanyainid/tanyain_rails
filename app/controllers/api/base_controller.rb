@@ -25,11 +25,11 @@ class Api::BaseController < ApplicationController
   end
 
   def render_failed
-    render json: { message: 'fail' }, status: 422
+    render json: { message: 'Gagal' }, status: 422
   end
 
   def render_registered
-    render json: { message: 'registered' }, status: 422
+    render json: { message: 'Email telah terdaftar' }, status: 422
   end
 
   def render_require_auth

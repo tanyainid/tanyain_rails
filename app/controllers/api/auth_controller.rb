@@ -5,6 +5,7 @@ class Api::AuthController < Api::BaseController
   def login
     return render_failed if @user.nil?
     return render_failed unless @user.valid_password? params[:password]
+
     encode_token
   end
 
@@ -14,9 +15,11 @@ class Api::AuthController < Api::BaseController
 
   def register
     return render_registered if @user.present?
+
     @user = create_user
     return render_failed if @user.nil?
-    render_success
+
+    encode_token
   end
 
   def user; end
