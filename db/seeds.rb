@@ -11,6 +11,7 @@ if User.count.zero?
   admin = User.create(email: 'admin@admin.com', password: '123456')
   admin.build_user_detail(name: 'admin')
   admin.save
+  admin.admin!
 end
 
 if Question.count.zero?
