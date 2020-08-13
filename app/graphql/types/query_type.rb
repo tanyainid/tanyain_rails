@@ -22,5 +22,10 @@ module Types
     def all_answers
       Answer.joins(:question)
     end
+
+    field :my_answers, [AnswerType], null: false
+    def my_answers
+      context[:current_user].answers.joins(:question)
+    end
   end
 end
