@@ -64,3 +64,5 @@ gem "figaro", "~> 1.2"
 gem "jwt", "~> 2.2"
 
 gem "friendly_id", "~> 5.3"
+
+gem "paranoia", "~> 2.4"

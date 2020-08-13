@@ -1,5 +1,7 @@
 module Types
   class MutationType < Types::BaseObject
+    field :update_question, mutation: Mutations::UpdateQuestion
+    field :delete_question, mutation: Mutations::DeleteQuestion
     field :filter_questions, mutation: Mutations::FilterQuestions
     field :create_answer, mutation: Mutations::CreateAnswer
     field :create_question, mutation: Mutations::CreateQuestion

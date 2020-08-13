@@ -25,10 +25,10 @@ module Mutations
     end
 
     def logged_in_user
-      if decoded_token
-        user_id = decoded_token[0]['user_id']
-        @user = User.find_by(id: user_id)
-      end
+      return unless decoded_token
+
+      user_id = decoded_token.first['user_id']
+      @user = User.find_by(id: user_id)
     end
 
     def logged_in?
@@ -42,6 +42,7 @@ module Mutations
     def ensure_current_user
       current_user = context[:current_user]
       raise GraphQL::ExecutionError, 'Not authorized' unless current_user
+
       current_user
     end
   end

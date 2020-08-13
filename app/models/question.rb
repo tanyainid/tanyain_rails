@@ -5,6 +5,7 @@ class Question < ApplicationRecord
   has_many :answers
 
   friendly_id :title, use: :slugged
+  acts_as_paranoid
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
