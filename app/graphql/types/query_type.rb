@@ -20,7 +20,7 @@ module Types
 
     field :all_answers, [AnswerType], null: false
     def all_answers
-      Answer.all
+      Answer.joins(:question)
     end
   end
 end
