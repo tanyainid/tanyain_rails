@@ -28,6 +28,10 @@ class Api::BaseController < ApplicationController
     render json: { message: 'Gagal' }, status: 422
   end
 
+  def render_wrong_credentials
+    render json: { message: 'Kombinasi email dan password kurang tepat' }, status: 422
+  end
+
   def render_registered
     render json: { message: 'Email telah terdaftar' }, status: 422
   end

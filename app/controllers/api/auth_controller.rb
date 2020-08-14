@@ -3,8 +3,8 @@ class Api::AuthController < Api::BaseController
   before_action :set_user, only: [:login, :register]
 
   def login
-    return render_failed if @user.nil?
-    return render_failed unless @user.valid_password? params[:password]
+    return render_wrong_credentials if @user.nil?
+    return render_wrong_credentials unless @user.valid_password? params[:password]
 
     encode_token
   end
