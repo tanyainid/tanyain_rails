@@ -77,3 +77,8 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: tanyain-rails
           heroku_email: arif.ikhsanudin.id@gmail.com
+
+      - name: Migrate and seed
+        run: |
+          which heroku
+          # heroku run rake db:migrate db:seed --app=tanyain-rails --api-key=${{ secrets.HEROKU_API_KEY }}
