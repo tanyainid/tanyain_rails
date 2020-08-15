@@ -80,5 +80,4 @@ jobs:
 
       - name: Migrate and seed
         run: |
-          which heroku
-          heroku run rake db:migrate db:seed --app=tanyain-rails --api-key=${{ secrets.HEROKU_API_KEY }}
+          heroku run rake db:migrate db:seed --app=tanyain-rails
