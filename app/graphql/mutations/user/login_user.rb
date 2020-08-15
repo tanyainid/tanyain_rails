@@ -11,9 +11,8 @@ module Mutations
       @user = ::User.find_by(email: email.downcase)
       return { message: 'not found' } if @user.blank?
       return { message: 'fail' } unless @user.valid_password? password
-      # binding.pry
 
-      return { message: 'good', access_token: encode_token(payload) }
+      return { message: 'ok', access_token: encode_token(payload) }
     end
 
     def payload

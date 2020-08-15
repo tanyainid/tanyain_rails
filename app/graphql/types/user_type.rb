@@ -3,6 +3,6 @@ module Types
     field :id, Integer, null: false
     field :email, String, null: false
     field :name, String, null: false
-    # field :user_detail, UserDetail, null: false
+    field :user_detail, UserDetail, null: false
   end
 end
