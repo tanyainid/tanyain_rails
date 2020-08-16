@@ -53,16 +53,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "graphql", "~> 1.11"
 gem 'graphiql-rails', '1.7.0'
 gem "devise", "~> 4.7"
-
 gem "rails_admin", "~> 2.0"
 gem "rack-cors", "~> 1.1"
-
 gem "devise-jwt", "~> 0.8.0"
-
 gem "figaro", "~> 1.2"
-
 gem "jwt", "~> 2.2"
-
 gem "friendly_id", "~> 5.3"
-
 gem "paranoia", "~> 2.4"
