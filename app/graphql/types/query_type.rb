@@ -25,14 +25,12 @@ module Types
 
     field :my_questions, [QuestionType], null: false
     def my_questions
-      current_user = ensure_current_user
-      current_user.questions
+      context[:current_user].questions
     end
 
     field :my_answers, [AnswerType], null: false
     def my_answers
-      current_user = ensure_current_user
-      current_user.answers.joins(:question)
+      context[:current_user].answers.joins(:question)
     end
   end
 end
